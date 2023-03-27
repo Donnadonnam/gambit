@@ -631,11 +631,7 @@ Game BuildNfg(GameParserState &p_parser, TableFileGame &p_data)
     dim[pl] = p_data.NumStrategies(pl);
   }
 
-  GameRep *nfg = NewTable(dim);
-  // Assigning this to the container assures that, if something goes
-  // wrong, the class will automatically be cleaned up
-  Game game = nfg;
-
+  Game nfg = NewTable(dim);
   nfg->SetTitle(p_data.m_title);
   nfg->SetComment(p_data.m_comment);
 
@@ -657,7 +653,7 @@ Game BuildNfg(GameParserState &p_parser, TableFileGame &p_data)
       p_parser.CreateLineMsg("Expecting outcome or payoff"));
   }
 
-  return game;
+  return nfg;
 }
 
 
