@@ -513,7 +513,7 @@ void ParseNfgHeader(GameParserState &p_state, TableFileGame &p_data)
 }
 
 
-void ReadOutcomeList(GameParserState &p_parser, GameRep *p_nfg)
+void ReadOutcomeList(GameParserState &p_parser, Game p_nfg)
 {
   if (p_parser.GetNextToken() == TOKEN_RBRACE) {
     // Special case: empty outcome list
@@ -579,11 +579,12 @@ void ReadOutcomeList(GameParserState &p_parser, GameRep *p_nfg)
   p_parser.GetNextToken();
 }
 
-void ParseOutcomeBody(GameParserState &p_parser, GameRep *p_nfg)
+void ParseOutcomeBody(GameParserState &p_parser, Game p_nfg)
 {
   ReadOutcomeList(p_parser, p_nfg);
 
-  StrategyProfileIterator iter(StrategySupportProfile(static_cast<GameRep *>(p_nfg)));
+  StrategySupportProfile profile(p_nfg);
+  StrategyProfileIterator iter(profile);
 
   while (p_parser.GetCurrentToken() != TOKEN_EOF) {
     if (p_parser.GetCurrentToken() != TOKEN_NUMBER) {
@@ -603,9 +604,10 @@ void ParseOutcomeBody(GameParserState &p_parser, GameRep *p_nfg)
   }
 }
 
-void ParsePayoffBody(GameParserState &p_parser, GameRep *p_nfg)
+void ParsePayoffBody(GameParserState &p_parser, Game p_nfg)
 {
-  StrategyProfileIterator iter(StrategySupportProfile(static_cast<GameRep *>(p_nfg)));
+  StrategySupportProfile profile(p_nfg);
+  StrategyProfileIterator iter(profile);
   int pl = 1;
 
   while (p_parser.GetCurrentToken() != TOKEN_EOF) {
