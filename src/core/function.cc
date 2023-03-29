@@ -44,8 +44,8 @@ using namespace Gambit;
 // vector perpendicular to the plane, then subtracting to compute the
 // component parallel to the plane.)
 //
-void FunctionOnSimplices::Project(Vector<double> &x, 
-				  const Array<int> &lengths) const
+void FunctionOnSimplices::Project(Vector<double> &x,
+                                  const Array<int> &lengths)
 {
   int index = 1;
   for (int part = 1; part <= lengths.Length(); part++)  {

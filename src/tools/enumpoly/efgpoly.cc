@@ -60,7 +60,7 @@ ProblemData::ProblemData(const BehaviorSupportProfile &p_support)
   Space = new gSpace(nVars);
   Lex = new term_order(Space, lex);
 
-  var = p_support.GetGame()->NumPlayers();
+  var = Array<Array<int>>(p_support.GetGame()->NumPlayers());
   int tnv = 0;
   for (int pl = 1; pl <= p_support.GetGame()->NumPlayers(); pl++) {
     var[pl] = Array<int>(SF.NumSequences(pl));

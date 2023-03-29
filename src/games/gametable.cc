@@ -97,7 +97,7 @@ Rational TablePureStrategyProfileRep::GetPayoff(int pl) const
     return outcome->GetPayoff<Rational>(pl);
   }
   else {
-    return 0;
+    return Rational(0);
   }
 }
 
@@ -110,7 +110,7 @@ TablePureStrategyProfileRep::GetStrategyValue(const GameStrategy &p_strategy) co
     return outcome->GetPayoff<Rational>(player);
   }
   else {
-    return 0;
+    return Rational(0);
   }
 }
 

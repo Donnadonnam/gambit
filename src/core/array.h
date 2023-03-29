@@ -62,7 +62,7 @@ public:
     bool operator==(const iterator &it) const
     { return (&m_array == &it.m_array) && (m_index == it.m_index); }
     bool operator!=(const iterator &it) const
-    { return !(*this == it); }
+    { return (&m_array != &it.m_array) || (m_index != it.m_index); }
   };
 
   class const_iterator {
@@ -78,13 +78,13 @@ public:
     bool operator==(const const_iterator &it) const
     { return (&m_array == &it.m_array) && (m_index == it.m_index); }
     bool operator!=(const const_iterator &it) const
-    { return !(*this == it); }
+    { return (&m_array != &it.m_array) || (m_index != it.m_index); }
   };
 
   /// @name Lifecycle
   //@{
   /// Constructs an array of length 'len', starting at '1'
-  Array(unsigned int len = 0)
+  explicit Array(unsigned int len = 0)
     : mindex(1), maxdex(len), data((len) ? new T[len] - 1 : 0) { } 
   /// Constructs an array starting at lo and ending at hi
   Array(int lo, int hi) : mindex(lo), maxdex(hi)

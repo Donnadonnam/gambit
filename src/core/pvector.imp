@@ -96,17 +96,20 @@ template <class T> PVector<T>::~PVector()
 
 template <class T> PVector<T>& PVector<T>::operator=(const PVector<T> &v)
 {
+  if (this == &v) {
+    return *this;
+  }
   if (!Check(v)) {
     throw DimensionException();
   }
   Vector<T>::operator=(v);
-  return (*this);
+  return *this;
 }
 
 template <class T> PVector<T>& PVector<T>::operator=(const Vector<T> &v)
 {
   Vector<T>::operator=(v);
-  return (*this);
+  return *this;
 }
 
 template <class T> PVector<T>& PVector<T>::operator=(T c)

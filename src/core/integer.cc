@@ -1142,7 +1142,7 @@ static void do_divide(unsigned short* rs,
         --qhat;
       else
         break;
-    };
+    }
     
     // multiply & subtract
     

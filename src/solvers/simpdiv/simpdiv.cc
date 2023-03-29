@@ -448,7 +448,7 @@ NashSimpdivStrategySolver::Solve(const MixedStrategyProfile<Rational> &p_start) 
     throw UndefinedException("Computing equilibria of games with imperfect recall is not supported.");
   }
   Integer k = find_lcd((const Vector<Rational> &) p_start);
-  Rational d = Rational(1, k);
+  Rational d = Rational(Integer(1), k);
     
   MixedStrategyProfile<Rational> y(p_start);
   if (m_verbose) {

@@ -321,7 +321,7 @@ T AggMixedStrategyProfileRep<T>::GetPayoff(int pl) const
     for (int j=0;j<aggPtr->getNumActions(i);++j){
       GameStrategy strategy = this->m_support.GetGame()->GetPlayer(i+1)->GetStrategy(j+1);
       int ind = this->m_support.m_profileIndex[strategy->GetId()];
-      s[aggPtr->firstAction(i)+j]= (ind==-1)?(T)0:this->m_probs[ind];
+      s[aggPtr->firstAction(i)+j]= (ind==-1) ? (T) 0 : this->m_probs[ind];
     }
   }
   return aggPtr->getMixedPayoff(pl-1, s);
@@ -482,7 +482,7 @@ T BagentMixedStrategyProfileRep<T>::GetPayoffDeriv(int pl, const GameStrategy &p
     }
    } 
   }
-  return baggPtr->getMixedPayoff(bplayer,btype, s);
+  return T(baggPtr->getMixedPayoff(bplayer,btype, s));
 }
 
 

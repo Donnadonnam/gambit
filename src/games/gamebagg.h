@@ -138,9 +138,9 @@ public:
   { return true; }
   bool IsConstSum() const override { throw UndefinedException(); }
   /// Returns the smallest payoff in any outcome of the game
-  Rational GetMinPayoff(int) const override { return baggPtr->getMinPayoff(); }
+  Rational GetMinPayoff(int) const override { return Rational(baggPtr->getMinPayoff()); }
   /// Returns the largest payoff in any outcome of the game
-  Rational GetMaxPayoff(int) const override { return baggPtr->getMaxPayoff(); }
+  Rational GetMaxPayoff(int) const override { return Rational(baggPtr->getMaxPayoff()); }
   //@}
 
   /// @name Writing data files
